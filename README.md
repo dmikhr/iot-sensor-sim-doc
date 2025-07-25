@@ -250,7 +250,8 @@ README.md
 ```
 
 **Notes**
-Check sample [Makefile](/assets/Makefile) from previous projects
+Check the sample [Makefile](/assets/Makefile) from previous projects
+
 **bin** - for compiled app binary and tooling: linter, debugger, etc.
 
 ## Tooling
