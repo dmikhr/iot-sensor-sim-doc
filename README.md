@@ -24,7 +24,7 @@ _For brevity, the application’s name (“SensSim IoT”) will be referred to a
   - [Project structure](#project-structure)
   - [Tooling](#tooling)
   - [CLI parameters](#cli-parameters)
-- [Potential extensions for sending signals](#potential-extensions-for-sending-signals)
+- [Potential extensions](#potential-extensions)
   - [gRPC gateway](#grpc-gateway)
   - [MQTT Integration](#mqtt-integration)
   - [Publishing to Apache Kafka](#publishing-to-apache-kafka)
@@ -281,7 +281,7 @@ Simulation app will be implemented as a CLI app. `spf13/pflag` will be used inst
 - `--expected-code`: success HTTP response code from target server
 - `--dry-run`: no actual requests will be sent, only logs will be produced
 
-# Potential extensions for sending signals
+# Potential extensions
 
 Even driven industrial platforms receives data from sensors using separate service which is responsible typically for data validation and passing it further but not for its processing. It passes it either to the next module directly (for example via gRPC) or publish it to messaging broker.
 
