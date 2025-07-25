@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: Sensor API
+  version: 1.0.0
+  description: API for managing sensor data
+paths:
+  /api/v1/sensors:
+    post:
+      summary: Create or update sensor data
+      description: Endpoint to submit sensor data to the server
+      requestBody:
+        description: Sensor data payload
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - sensorId
+                - type
+                - unit
+                - timestamp
+                - value
+              properties:
+                sensorId:
+                  type: string
+                  description: Unique identifier for the sensor
+                  example: "sensor_123"
+                type:
+                  type: string
+                  description: Type of parameter measured by the sensor
+                  example: "temperature"
+                unit:
+                  type: string
+                  description: Unit of measurement
+                  example: "Celsius"
+                timestamp:
+                  type: string
+                  format: date-time
+                  description: Time of the measurement
+                  example: "2025-07-22T14:48:00Z"
+                value:
+                  type: number
+                  format: float
+                  description: Measured value
+                  example: 23.5
+      responses:
+        '202':
+          description: Accepted - Request was successfully received and accepted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              example: {}
+        '400':
+          description: Bad Request - Invalid request format or parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Invalid request format
+        '429':
+          description: Too Many Requests - Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Rate limit exceeded
+        '500':
+          description: Internal Server Error - Unexpected server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal server error
+        '503':
+          description: Service Unavailable - Server is overloaded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Server is overloaded
