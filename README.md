@@ -226,6 +226,7 @@ ORDER BY (device_id, metric_name, timestamp);
 Since clickhouse is more effective at **saving data in bulk**, mechanism for reliable data saving in bulk should be implemented. We **cannot use the same buffer** for collecting sensor simulation data and use it for flushing data into clickhouse since new data will income in buffer at the same time as data from buffer being saved into DB.
 
 **Solution**
+
 Consider decoupled 3 channel system, let there be channels A, B, C (B and C are buffered):
 
 - channel A receives real time data from sensor simulation goroutines.
